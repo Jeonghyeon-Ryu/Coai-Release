@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coai · 내 컴퓨터에서 도는 AI 직원 회사</title>
+<meta name="description" content="프롬프트 한 줄로 AI 직원 회사를 만들고, 폴더 단위 기억으로 일을 시킵니다. 회사 하나가 폴더 하나이고 모든 기록이 사람이 읽는 파일로 남는 로컬 우선 도구. Windows 설치본과 Linux 셀프호스트 서버.">
+<link rel="canonical" href="https://jeonghyeon-ryu.github.io/Coai-Release/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coai · 내 컴퓨터에서 도는 AI 직원 회사">
+<meta property="og:description" content="회사 하나가 폴더 하나. 직원은 마크다운 카드 한 장. 기억은 사람이 읽는 파일로 남습니다.">
+<meta property="og:url" content="https://jeonghyeon-ryu.github.io/Coai-Release/">
+<meta property="og:image" content="https://jeonghyeon-ryu.github.io/Coai-Release/assets/app-memory.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 19 13 29 16 19 19 16 29 13 19 3 16 13 13Z' fill='%23e8e8e8'/%3E%3C/svg%3E">
+<style>
+/*
+  Coai-Release 랜딩.
+  제품(Coai)의 시각 언어를 그대로 가져온다: 무채색 표면 위계 · 그림자 대신 밝기 단계 ·
+  강조는 면 채움이 아니라 외곽선과 반전. 테마는 다크 하나로 잠근다.
+  ⚠ 폰트를 네트워크로 불러오지 않는다. 있으면 쓰고 없으면 시스템 산세로 떨어진다.
+  ⚠ 모서리 반경은 한 벌이다: 면 14px · 누르는 것 999px. 섞지 않는다.
+*/
+:root{
+  --bg:#0f0f10; --surface:#151517; --raised:#1c1c1f; --line:#2a2a2e; --line-soft:#212125;
+  --fg:#ededee; --fg-2:#a8a8ad; --fg-3:#76767d;
+  --accent:#7aa2f7; --accent-ink:#0f0f10;
+  --r:14px; --pill:999px;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
+  font-size:16px;line-height:1.65;letter-spacing:-.005em;word-break:keep-all;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* 내비 — 한 줄, 64px */
+.nav{position:sticky;top:0;z-index:20;height:64px;display:flex;align-items:center;
+  background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line-soft)}
+.nav .wrap{display:flex;align-items:center;gap:24px}
+.brand{display:inline-flex;align-items:center;gap:9px;font-weight:700;letter-spacing:-.02em;
+  text-decoration:none;font-size:17px}
+.brand svg{width:19px;height:19px;flex:none}
+.nav nav{margin-left:auto;display:flex;align-items:center;gap:22px}
+.nav nav a{color:var(--fg-2);text-decoration:none;font-size:14.5px}
+.nav nav a:hover{color:var(--fg)}
+@media(max-width:640px){.nav nav a.hide-sm{display:none}}
+
+/* 버튼 — 누르는 것은 전부 알약 */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  height:44px;padding:0 20px;border-radius:var(--pill);font:inherit;font-size:14.5px;
+  font-weight:600;text-decoration:none;white-space:nowrap;cursor:pointer;
+  border:1px solid var(--line);background:var(--raised);color:var(--fg);
+  transition:transform .12s cubic-bezier(.16,1,.3,1),border-color .12s,background .12s}
+.btn:hover{border-color:var(--fg-3)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--fg);color:var(--accent-ink);border-color:var(--fg)}
+.btn.primary:hover{background:#fff;border-color:#fff}
+.btn.sm{height:36px;padding:0 14px;font-size:13.5px;font-weight:500}
+
+/* 히어로 */
+.hero{padding:76px 0 8px}
+.hero h1{margin:0 0 18px;font-size:clamp(30px,5.2vw,52px);line-height:1.18;
+  letter-spacing:-.035em;font-weight:700}
+.hero p.lead{margin:0 0 28px;max-width:52ch;color:var(--fg-2);font-size:clamp(15px,1.7vw,18px)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:10px}
+.shot{margin:44px 0 0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  background:var(--surface)}
+.shot img{width:100%}
+.shot figcaption{padding:11px 16px;border-top:1px solid var(--line-soft);
+  color:var(--fg-3);font-size:12.5px}
+
+/* 섹션 */
+section{padding:74px 0}
+.eyebrow{margin:0 0 12px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--fg-3)}
+h2{margin:0 0 14px;font-size:clamp(23px,3vw,32px);line-height:1.3;letter-spacing:-.025em;font-weight:700}
+.sub{margin:0;color:var(--fg-2);max-width:62ch}
+
+/* 무엇이 다른가 — 비대칭 2열, 3등분 카드 금지 */
+.why{display:grid;gap:30px;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:start}
+.why .points{display:grid;gap:2px}
+.pt{padding:18px 0;border-top:1px solid var(--line-soft)}
+.pt:first-child{border-top:0;padding-top:0}
+.pt h3{margin:0 0 5px;font-size:16.5px;font-weight:650;letter-spacing:-.01em}
+.pt p{margin:0;color:var(--fg-2);font-size:14.5px}
+@media(max-width:860px){.why{grid-template-columns:1fr}}
+
+/* 다운로드 — 두 장 */
+.dl{display:grid;gap:18px;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:34px}
+@media(max-width:860px){.dl{grid-template-columns:minmax(0,1fr)}}
+/* ⚠ min-width:0이 없으면 안의 pre가 카드를 밀어 좁은 폭에서 페이지가 가로로 넘친다(390px 실측 9px). */
+.card{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);
+  padding:24px;display:flex;flex-direction:column;min-width:0}
+.tag{display:inline-block;padding:3px 11px;border:1px solid var(--line);border-radius:var(--pill);
+  font-family:var(--mono);font-size:11.5px;color:var(--fg-2);margin-bottom:14px}
+.card h3{margin:0 0 4px;font-size:20px;letter-spacing:-.02em;font-weight:700}
+.meta{margin:0 0 18px;color:var(--fg-3);font-family:var(--mono);font-size:12.5px}
+.card .btn{width:100%}
+.steps{margin:20px 0 0;padding:0;list-style:none;display:grid;gap:11px}
+.steps li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;color:var(--fg-2);font-size:14px}
+.steps b{display:grid;place-items:center;width:22px;height:22px;border-radius:var(--pill);
+  border:1px solid var(--line);font-family:var(--mono);font-size:11.5px;color:var(--fg-3);font-weight:500}
+.steps strong{color:var(--fg);font-weight:600}
+pre{margin:18px 0 0;padding:14px 16px;background:var(--bg);border:1px solid var(--line-soft);
+  border-radius:10px;overflow-x:auto;min-width:0;max-width:100%;
+  font-family:var(--mono);font-size:12.5px;line-height:1.75;color:var(--fg-2)}
+pre .c{color:var(--fg-3)}
+.hash{margin-top:auto;padding-top:18px;color:var(--fg-3);font-family:var(--mono);
+  font-size:11.5px;word-break:break-all;line-height:1.6}
+
+/* 쓰기 전에 */
+.notes{display:grid;gap:0;margin-top:30px;border:1px solid var(--line);border-radius:var(--r);
+  overflow:hidden;background:var(--surface)}
+.note{padding:20px 24px;border-top:1px solid var(--line-soft);display:grid;
+  grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:8px 24px;align-items:baseline}
+.note:first-child{border-top:0}
+.note dt{color:var(--fg);font-weight:650;font-size:15px}
+.note dd{margin:0;color:var(--fg-2);font-size:14.5px}
+@media(max-width:700px){.note{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--line-soft);padding:40px 0 60px;color:var(--fg-3);font-size:13.5px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px 26px;align-items:center}
+footer a{color:var(--fg-2);text-decoration:none}
+footer a:hover{color:var(--fg)}
+footer .grow{margin-left:auto}
+
+/* 모션은 낮게. 들어올 때 한 번만 움직이고, 줄이기 설정이면 아예 안 움직인다. */
+@media(prefers-reduced-motion:no-preference){
+  .rise{opacity:0;transform:translateY(14px);
+    animation:rise .6s cubic-bezier(.16,1,.3,1) forwards;animation-delay:var(--d,0ms)}
+  @keyframes rise{to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 19 13 29 16 19 19 16 29 13 19 3 16 13 13Z" fill="currentColor"/></svg>
+      Coai
+    </a>
+    <nav>
+      <a class="hide-sm" href="#what">소개</a>
+      <a href="#download">다운로드</a>
+      <a class="hide-sm" href="#before">쓰기 전에</a>
+      <a href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases">릴리스</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <h1 class="rise">내 컴퓨터에서 도는<br>AI 직원 회사</h1>
+    <p class="lead rise" style="--d:60ms">
+      회사 하나가 폴더 하나입니다. 직원은 마크다운 카드 한 장이고, 주고받은 일은
+      사람이 열어 읽는 파일로 남습니다.
+    </p>
+    <div class="cta rise" style="--d:120ms">
+      <a class="btn primary" href="#download">다운로드</a>
+      <a class="btn" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases">모든 릴리스</a>
+    </div>
+
+    <figure class="shot rise" style="--d:180ms;margin-bottom:0">
+      <img src="assets/app-memory.png" width="2720" height="1720"
+           alt="Coai의 기억 화면. 왼쪽에 폴더 트리, 가운데에 열린 노트와 자동으로 생성된 관련 문서 목록, 오른쪽 아래에 문서 사이 연결을 그린 성도 창이 떠 있다.">
+      <figcaption>기억 화면. 닮은 노트끼리 저절로 이어지고, 지금 읽는 문서가 성도에 표시됩니다.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="what">
+  <div class="wrap why">
+    <div>
+      <p class="eyebrow">왜 로컬 우선인가</p>
+      <h2>기억이 남의 서버가 아니라<br>내 폴더에 쌓입니다</h2>
+      <p class="sub">
+        직원이 일한 기록은 벡터DB 안에 갇히지 않습니다. 일지도 노트도 산출물도 전부
+        내 디스크의 마크다운 파일이라, Coai를 지운 뒤에도 그대로 열립니다.
+      </p>
+    </div>
+    <div class="points">
+      <div class="pt">
+        <h3>회사 하나 = 폴더 하나</h3>
+        <p>직원 카드, 대화, 일지, 산출물이 한 폴더 아래 모입니다. 통째로 복사하면 그게 백업입니다.</p>
+      </div>
+      <div class="pt">
+        <h3>기억이 저절로 엮입니다</h3>
+        <p>닮은 노트끼리 양방향으로 이어지고, 무엇이 무엇과 붙어 있는지 별자리로 보여 줍니다.</p>
+      </div>
+      <div class="pt">
+        <h3>권한은 파일이 아니라 상수</h3>
+        <p>직원이 만질 수 있는 범위는 코드에 얼어 있습니다. 설정 파일을 고쳐 스스로 권한을 올릴 수 없습니다.</p>
+      </div>
+      <div class="pt">
+        <h3>엔진은 고르는 것</h3>
+        <p>Anthropic 구독이나 API 키, 사내 vLLM 주소를 회사마다 따로 넣습니다. 한 곳에 묶이지 않습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="download">
+  <div class="wrap">
+    <h2>다운로드</h2>
+    <p class="sub">첫 공개 버전입니다. 두 가지 형태로 씁니다.</p>
+
+    <div class="dl">
+
+      <article class="card">
+        <span class="tag">Windows 10/11 · x64</span>
+        <h3>Coai 데스크톱</h3>
+        <p class="meta">v0.1.0 · 설치본(.exe) · 약 104MB</p>
+        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.0/Coai_0.1.0_x64-setup.exe">설치본 받기</a>
+        <ol class="steps">
+          <li><b>1</b><span><strong>실행.</strong> 내려받은 설치본을 두 번 누릅니다.</span></li>
+          <li><b>2</b><span><strong>경고 넘기기.</strong> SmartScreen이 막으면 <strong>추가 정보</strong> 다음 <strong>실행</strong>을 누릅니다. 아래를 함께 읽어 주세요.</span></li>
+          <li><b>3</b><span><strong>엔진 넣기.</strong> 설정 화면에서 쓰실 엔진 자격을 넣으면 직원이 일을 시작합니다.</span></li>
+        </ol>
+        <p class="hash">SHA-256<br>923931ea419dfb0a71216a640e67b2227d530ea73a13177646ce65aa39bc3881</p>
+      </article>
+
+      <article class="card">
+        <span class="tag">Linux 셀프호스트 · x86-64</span>
+        <h3>Coai 서버</h3>
+        <p class="meta">v0.1.0 · tar.gz · 약 109MB · Node 동봉</p>
+        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.0/coai-server-0.1.0-linux-x64.tar.gz">타르볼 받기</a>
+        <pre><span class="c"># 풀고 안내를 읽습니다</span>
+tar -xzf coai-server-0.1.0-linux-x64.tar.gz
+cd coai-server &amp;&amp; cat README.md
+
+<span class="c"># Node는 안에 들어 있어 따로 안 깔아도 됩니다</span>
+./node server.js</pre>
+        <p class="hash">SHA-256<br>3072e87357c62715854c5df0ea8b09d563f29f51000ed2b4a1507cb6ced74fab</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="before">
+  <div class="wrap">
+    <p class="eyebrow">먼저 알아 두실 것</p>
+    <h2>숨기지 않고 적습니다</h2>
+    <dl class="notes">
+      <div class="note">
+        <dt>서명이 없습니다</dt>
+        <dd>Authenticode 코드 서명을 하지 않았습니다. 그래서 Windows가 만든 사람을 확인해 주지
+          않고 SmartScreen이 막습니다. <strong>이 저장소의 릴리스에서 받은 파일만</strong> 쓰시고,
+          위의 SHA-256과 대조해 주세요. PowerShell에서
+          <code>Get-FileHash .\Coai_0.1.0_x64-setup.exe -Algorithm SHA256</code>.</dd>
+      </div>
+      <div class="note">
+        <dt>엔진은 따로입니다</dt>
+        <dd>Coai는 모델을 갖고 있지 않습니다. 설치한 뒤 쓰실 엔진의 자격을 넣어야 직원이 움직입니다.</dd>
+      </div>
+      <div class="note">
+        <dt>자동 업데이트는 꺼져 있습니다</dt>
+        <dd>새 버전은 이 저장소 릴리스에 올라옵니다. 받아서 덮어 설치하시면 됩니다.</dd>
+      </div>
+      <div class="note">
+        <dt>첫 공개 버전입니다</dt>
+        <dd>v0.1.0입니다. 쓰시다 막히는 곳은 저장소 이슈로 알려 주시면 고치겠습니다.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top" style="font-size:15px">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 19 13 29 16 19 19 16 29 13 19 3 16 13 13Z" fill="currentColor"/></svg>
+      Coai
+    </a>
+    <span>MIT License · Copyright (c) 2026 RSCC</span>
+    <span class="grow"><a href="https://github.com/Jeonghyeon-Ryu/Coai-Release">GitHub</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
