@@ -36,7 +36,7 @@
 받은 파일이 올라온 그대로인지 확인하려면 릴리스 노트에 적힌 SHA-256과 대조하시면 됩니다:
 
 ```powershell
-Get-FileHash .\Coai_0.1.0_x64-setup.exe -Algorithm SHA256
+Get-FileHash .\Coai_0.1.1_x64-setup.exe -Algorithm SHA256
 ```
 
 ## Linux — 셀프호스트
@@ -45,7 +45,7 @@ Get-FileHash .\Coai_0.1.0_x64-setup.exe -Algorithm SHA256
 Node 런타임과 실행에 필요한 것이 **함께 들어 있어** 별도 설치가 필요 없습니다.
 
 ```bash
-tar -xzf coai-server-0.1.0-linux-x64.tar.gz
+tar -xzf coai-server-0.1.1-linux-x64.tar.gz
 cd coai-server
 cat README.md
 ```
@@ -56,8 +56,9 @@ cat README.md
 
 - **엔진 자격이 따로 필요합니다.** Coai 자체는 모델을 갖고 있지 않습니다. 설치한 뒤 설정 화면에서
   쓰실 엔진(Anthropic 구독 토큰·API 키, 사내 vLLM 주소 등)을 넣으셔야 직원이 일합니다.
-- **자동 업데이트는 아직 꺼져 있습니다.** 새 버전은 이 저장소 Releases에 올라오며, 받아서 덮어
-  설치하시면 됩니다.
+- **업데이트는 묻고 설치합니다.** v0.1.1부터 앱이 새 버전을 확인해 알려 주고, 누르시면 설치합니다
+  — 몰래 받아 깔지 않습니다. 다만 **v0.1.0에는 업데이트 기능이 없어서**, 그 버전을 쓰고 계시면
+  v0.1.1은 한 번 직접 받아 설치하셔야 합니다.
 - 회사 데이터는 사용자 폴더 안에 남습니다. 지우기 전에는 사라지지 않습니다.
 
 ## 라이선스와 제3자 고지
