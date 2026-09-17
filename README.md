@@ -36,19 +36,29 @@
 받은 파일이 올라온 그대로인지 확인하려면 릴리스 노트에 적힌 SHA-256과 대조하시면 됩니다:
 
 ```powershell
-Get-FileHash .\Coai_0.1.1_x64-setup.exe -Algorithm SHA256
+Get-FileHash .\Coai_0.1.2_x64-setup.exe -Algorithm SHA256
 ```
 
 ## Linux — 셀프호스트
 
 타르볼을 풀면 안에 `README.md`가 있고, systemd 사용자 서비스로 띄우는 방법이 적혀 있습니다.
-Node 런타임과 실행에 필요한 것이 **함께 들어 있어** 별도 설치가 필요 없습니다.
+**v0.1.2부터 Node 런타임이 함께 들어 있어** 별도 설치가 필요 없습니다.
 
 ```bash
-tar -xzf coai-server-0.1.1-linux-x64.tar.gz
+tar -xzf coai-server-0.1.2-linux-x64.tar.gz
 cd coai-server
 cat README.md
+
+# 바로 띄우려면
+./node server.js
 ```
+
+동봉된 Node는 **glibc x86-64**용입니다. Alpine 같은 musl 배포판에서는 안 돕니다 —
+그 환경에서는 시스템 Node 20+ 로 `node server.js` 를 쓰세요.
+라이선스 전문은 타르볼 안 `NODE-LICENSE`에 있습니다.
+
+> v0.1.1 이하의 타르볼에는 Node가 들어 있지 않습니다. 그 버전을 받으셨다면
+> `./node` 가 없다고 나오는 것이 정상이고, 시스템 Node 20+ 가 필요합니다.
 
 ---
 
