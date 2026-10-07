@@ -112,6 +112,9 @@ pre{margin:18px 0 0;padding:14px 16px;background:var(--bg);border:1px solid var(
   border-radius:10px;overflow-x:auto;min-width:0;max-width:100%;
   font-family:var(--mono);font-size:12.5px;line-height:1.75;color:var(--fg-2)}
 pre .c{color:var(--fg-3)}
+/* 복사해 붙일 긴 한 줄(설치 명령)은 가로 스크롤 대신 접는다 — 잘린 채 보이면 끝까지 안 고르고 복사한다. */
+pre.fold{white-space:pre-wrap;word-break:break-all}
+code{font-family:var(--mono);font-size:.88em;color:var(--fg)}
 .hash{margin-top:auto;padding-top:18px;color:var(--fg-3);font-family:var(--mono);
   font-size:11.5px;word-break:break-all;line-height:1.6}
 
@@ -150,6 +153,7 @@ footer .grow{margin-left:auto}
     <nav>
       <a class="hide-sm" href="#what">소개</a>
       <a href="#download">다운로드</a>
+      <a class="hide-sm" href="#cli">터미널</a>
       <a class="hide-sm" href="#before">쓰기 전에</a>
       <a href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases">릴리스</a>
     </nav>
@@ -219,32 +223,73 @@ footer .grow{margin-left:auto}
       <article class="card">
         <span class="tag">Windows 10/11 · x64</span>
         <h3>Coai 데스크톱</h3>
-        <p class="meta">v0.1.2 · 설치본(.exe) · 약 105MB</p>
-        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.2/Coai_0.1.2_x64-setup.exe">설치본 받기</a>
+        <p class="meta">v0.1.4 · 설치본(.exe) · 약 105MB</p>
+        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.4/Coai_0.1.4_x64-setup.exe">설치본 받기</a>
         <ol class="steps">
           <li><b>1</b><span><strong>실행.</strong> 내려받은 설치본을 두 번 누릅니다.</span></li>
           <li><b>2</b><span><strong>경고 넘기기.</strong> SmartScreen이 막으면 <strong>추가 정보</strong> 다음 <strong>실행</strong>을 누릅니다. 아래를 함께 읽어 주세요.</span></li>
           <li><b>3</b><span><strong>엔진 넣기.</strong> 설정 화면에서 쓰실 엔진 자격을 넣으면 직원이 일을 시작합니다.</span></li>
+          <li><b>4</b><span><strong>터미널에서도.</strong> 새로 연 터미널의 프로젝트 폴더에서 <code>coai</code>를 치면 그 폴더의 일을 직원에게 맡깁니다. <a href="#cli">아래</a>를 보세요.</span></li>
         </ol>
-        <p class="hash">SHA-256<br>bbf9aa8d6e929dc4504eba13e28ced7fda88814b08d4a625ce9e7c6309d842cf</p>
+        <p class="hash">SHA-256<br>e0fc59e061ecdef19e6c7c70e17b00646de92cef64a1f865582c48d82f56d3e1</p>
       </article>
 
       <article class="card">
         <span class="tag">Linux 셀프호스트 · x86-64</span>
         <h3>Coai 서버</h3>
-        <p class="meta">v0.1.2 · tar.gz · 약 151MB · Node 동봉(glibc x86-64)</p>
-        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.2/coai-server-0.1.2-linux-x64.tar.gz">타르볼 받기</a>
-        <pre><span class="c"># 풀고 안내를 읽습니다</span>
-tar -xzf coai-server-0.1.2-linux-x64.tar.gz
-cd coai-server &amp;&amp; cat README.md
-
-<span class="c"># Node가 안에 들어 있어 따로 안 깔아도 됩니다</span>
-./node server.js</pre>
-        <p class="meta" style="margin:14px 0 0">동봉된 Node는 <strong>glibc</strong>용입니다.
-          Alpine 같은 musl 배포판에서는 시스템 Node 20+ 로 <code>node server.js</code> 를 쓰세요.</p>
-        <p class="hash">SHA-256<br>cb13ad54679cb4d4c29954ab32282e35646f969c082dc335dd1bd028d71421d6</p>
+        <p class="meta">v0.1.4 · tar.gz · 약 151MB · Node 동봉(glibc x86-64)</p>
+        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.4/coai-server-0.1.4-linux-x64.tar.gz">타르볼 받기</a>
+        <pre class="fold"><span class="c"># 한 줄 설치 — 다시 실행하면 업데이트입니다</span>
+curl -fsSL https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/latest/download/install.sh | bash</pre>
+        <ol class="steps">
+          <li><b>1</b><span><strong>설치.</strong> 최신 타르볼을 받아 systemd 사용자 서비스로 띄웁니다. root가 필요 없고, 데이터 폴더는 업데이트가 건드리지 않습니다.</span></li>
+          <li><b>2</b><span><strong>접속.</strong> 서버는 이 기계의 <code>127.0.0.1:53011</code>에만 열립니다. 다른 컴퓨터에서는 SSH 터널로 붙습니다.</span></li>
+          <li><b>3</b><span><strong>직접 띄우려면.</strong> 받은 타르볼 안 <code>README.md</code>대로 <code>PORT</code>·<code>HOSTNAME</code>·<code>APP_ROOT</code> 세 값을 꼭 주세요. 빼면 3000번 포트·모든 네트워크에 붙고, 데이터가 업데이트 때 지워지는 자리에 쌓입니다.</span></li>
+        </ol>
+        <p class="meta" style="margin:14px 0 0">x86-64 · systemd 사용자 세션이 필요합니다. 동봉된 Node는 <strong>glibc</strong>용이라
+          Alpine 같은 musl 배포판에서는 시스템 Node 20+ 로 직접 띄워야 합니다.</p>
+        <p class="hash">SHA-256<br>3a5253f94156b55c3ee5527408a9f0292e4bedbc0049771937bd3d76a00ee555</p>
       </article>
 
+    </div>
+  </div>
+</section>
+
+<section id="cli">
+  <div class="wrap why">
+    <div>
+      <p class="eyebrow">v0.1.4부터 · 터미널 창구</p>
+      <h2>작업하던 폴더에서<br><code style="font-size:.92em">coai</code> 한 줄</h2>
+      <p class="sub">
+        화면을 오가지 않고, 지금 터미널이 있는 폴더의 일을 직원에게 맡깁니다.
+        직원은 그 폴더에서 파일을 만들고 고치고, 기억과 일지는 늘 그렇듯 회사 폴더에 쌓입니다.
+      </p>
+      <pre><span class="c"># 프로젝트 폴더에서</span>
+cd my-project
+coai                    <span class="c"># 직원과 대화하는 화면</span>
+
+<span class="c"># 한 번 시키고 답만 받기 (스크립트용)</span>
+coai -p "README를 정리해 줘" --staff 김개발
+
+coai --help</pre>
+    </div>
+    <div class="points">
+      <div class="pt">
+        <h3>그 폴더는 그 일에만</h3>
+        <p>실행한 폴더가 이번 일에만 직원의 작업 범위에 더해집니다. 회사에 등록되지 않고, 다음 일에는 다시 정합니다.</p>
+      </div>
+      <div class="pt">
+        <h3>데스크톱 — 설치하면 바로</h3>
+        <p>설치하거나 업데이트하면 <code>coai</code>가 사용자 PATH에 올라갑니다. <strong>새로 연</strong> PowerShell·cmd·Git Bash에서 됩니다. 앱이 꺼져 있으면 <code>coai</code>가 켜고 기다립니다.</p>
+      </div>
+      <div class="pt">
+        <h3>셀프호스트 — 서버와 같은 기계에서</h3>
+        <p>설치 스크립트가 <code>~/.local/bin/coai</code>를 만듭니다. 다른 컴퓨터의 폴더는 서버가 볼 수 없어서, 원격에서 보낸 폴더는 거절합니다. 그때는 <code>--no-folder</code>로 회사 폴더에서 일하게 할 수 있습니다.</p>
+      </div>
+      <div class="pt">
+        <h3>열지 않는 폴더와 엔진</h3>
+        <p>홈 폴더 자체와 자격 폴더(<code>~/.ssh</code> 등)는 열지 않습니다. 폴더 밖을 막을 수 없는 엔진(Codex·Antigravity·셸을 연 Gemini)에게는 폴더 일을 맡기지 않습니다.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -259,7 +304,7 @@ cd coai-server &amp;&amp; cat README.md
         <dd>Authenticode 코드 서명을 하지 않았습니다. 그래서 Windows가 만든 사람을 확인해 주지
           않고 SmartScreen이 막습니다. <strong>이 저장소의 릴리스에서 받은 파일만</strong> 쓰시고,
           위의 SHA-256과 대조해 주세요. PowerShell에서
-          <code>Get-FileHash .\Coai_0.1.2_x64-setup.exe -Algorithm SHA256</code>.</dd>
+          <code>Get-FileHash .\Coai_0.1.4_x64-setup.exe -Algorithm SHA256</code>.</dd>
       </div>
       <div class="note">
         <dt>엔진은 따로입니다</dt>
@@ -272,8 +317,14 @@ cd coai-server &amp;&amp; cat README.md
           직접 설치</strong>해 주세요 — v0.1.0에는 업데이트 기능 자체가 없습니다.</dd>
       </div>
       <div class="note">
+        <dt>셀프호스트는 내 기계에만 열립니다</dt>
+        <dd>인증 없이 한 사람이 쓰는 서버라서 <code>127.0.0.1</code>에만 붙습니다. 포트를 공개로 열면 회사 전체(직원·기억·자격)가
+          그대로 노출됩니다. 다른 컴퓨터에서는 SSH 터널로 쓰세요 —
+          <code>ssh -L 53011:127.0.0.1:53011 사용자@서버</code> 뒤 브라우저에서 <code>http://127.0.0.1:53011</code>.</dd>
+      </div>
+      <div class="note">
         <dt>아직 초기 버전입니다</dt>
-        <dd>v0.1.2입니다. 쓰시다 막히는 곳은 저장소 이슈로 알려 주시면 고치겠습니다.</dd>
+        <dd>v0.1.4입니다. 쓰시다 막히는 곳은 저장소 이슈로 알려 주시면 고치겠습니다.</dd>
       </div>
     </dl>
   </div>
