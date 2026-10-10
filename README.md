@@ -28,6 +28,8 @@
 
 대화 화면과 터미널(`coai`)이 같은 규칙으로 움직입니다.
 
+- **켜 둔 동안에도 새 버전 알림** (v0.1.9) — 앱을 켤 때뿐 아니라 켜 둔 동안 한 시간마다 새 버전을 확인합니다.
+  새 버전이 나오면 다시 켜지 않아도 알림 카드가 뜨고, 설치는 누르실 때만 합니다.
 - **뒤로가기는 직전 메뉴로** (v0.1.8) — 뒤로가기(마우스의 뒤로 버튼 · `Alt+←`)를 누르면 직전에 쓰던 메뉴나 회사로 돌아갑니다.
   직원을 바꾸거나 패널을 여닫은 것은 기록하지 않습니다. 데스크톱에서 첫 화면보다 더 뒤로 가도 흰 화면이 되지 않고,
   고치던 파일의 저장 안 한 수정은 뒤로 갔다 와도 남아 있습니다.
@@ -62,7 +64,7 @@
 SHA-256)과 대조하시면 됩니다:
 
 ```powershell
-Get-FileHash .\Coai_0.1.8_x64-setup.exe -Algorithm SHA256
+Get-FileHash .\Coai_0.1.9_x64-setup.exe -Algorithm SHA256
 ```
 
 ## Linux — 셀프호스트
@@ -90,7 +92,7 @@ ssh -L 53011:127.0.0.1:53011 사용자@서버
 타르볼을 풀고 안의 `README.md`대로 **세 값을 반드시 주고** 띄웁니다:
 
 ```bash
-tar -xzf coai-server-0.1.8-linux-x64.tar.gz
+tar -xzf coai-server-0.1.9-linux-x64.tar.gz
 cd coai-server
 PORT=53011 HOSTNAME=127.0.0.1 APP_ROOT=$HOME/.coai-selfhost/data/workspaces ./node server.js
 ```
