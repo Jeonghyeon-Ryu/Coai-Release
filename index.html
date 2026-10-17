@@ -224,22 +224,22 @@ footer .grow{margin-left:auto}
       <article class="card">
         <span class="tag">Windows 10/11 · x64</span>
         <h3>Coai 데스크톱</h3>
-        <p class="meta">v0.1.17 · 설치본(.exe) · 약 107MB</p>
-        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.17/Coai_0.1.17_x64-setup.exe">설치본 받기</a>
+        <p class="meta">v0.1.18 · 설치본(.exe) · 약 107MB</p>
+        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.18/Coai_0.1.18_x64-setup.exe">설치본 받기</a>
         <ol class="steps">
           <li><b>1</b><span><strong>실행.</strong> 내려받은 설치본을 두 번 누릅니다.</span></li>
           <li><b>2</b><span><strong>경고 넘기기.</strong> SmartScreen이 막으면 <strong>추가 정보</strong> 다음 <strong>실행</strong>을 누릅니다. 아래를 함께 읽어 주세요.</span></li>
           <li><b>3</b><span><strong>엔진 넣기.</strong> 설정 화면에서 쓰실 엔진 자격을 넣으면 직원이 일을 시작합니다.</span></li>
           <li><b>4</b><span><strong>터미널에서도.</strong> 새로 연 터미널의 프로젝트 폴더에서 <code>coai</code>를 치면 그 폴더의 일을 직원에게 맡깁니다. <a href="#cli">아래</a>를 보세요.</span></li>
         </ol>
-        <p class="hash">SHA-256<br>e077a42fa6a3b1c33a703bb6601309d06d21a110e5140d52bbef4af2efd41630</p>
+        <p class="hash">SHA-256<br>c58abd708badbc383b8dc2791e1d350194b7902e450c4a834bbfbe58fbfd8ff1</p>
       </article>
 
       <article class="card">
         <span class="tag">Linux 셀프호스트 · x86-64</span>
         <h3>Coai 서버</h3>
-        <p class="meta">v0.1.17 · tar.gz · 약 151MB · Node 동봉(glibc x86-64)</p>
-        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.17/coai-server-0.1.17-linux-x64.tar.gz">타르볼 받기</a>
+        <p class="meta">v0.1.18 · tar.gz · 약 151MB · Node 동봉(glibc x86-64)</p>
+        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.18/coai-server-0.1.18-linux-x64.tar.gz">타르볼 받기</a>
         <pre class="fold"><span class="c"># 한 줄 설치 — 다시 실행하면 업데이트입니다</span>
 curl -fsSL https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/latest/download/install.sh | bash</pre>
         <ol class="steps">
@@ -249,7 +249,7 @@ curl -fsSL https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/latest/downlo
         </ol>
         <p class="meta" style="margin:14px 0 0">x86-64 · systemd 사용자 세션이 필요합니다. 동봉된 Node는 <strong>glibc</strong>용이라
           Alpine 같은 musl 배포판에서는 시스템 Node 20+ 로 직접 띄워야 합니다.</p>
-        <p class="hash">SHA-256<br>ae46fd79fb60b0f2f4de13bfe0715ccb619d428e56725cfd5b6e238c83171304</p>
+        <p class="hash">SHA-256<br>19b65c4a4dca3c6ae1c7fcf8442a8137b047304e37329196995ad06cbb5f305f</p>
       </article>
 
     </div>
@@ -259,7 +259,7 @@ curl -fsSL https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/latest/downlo
 <section id="new">
   <div class="wrap why">
     <div>
-      <p class="eyebrow">v0.1.5 ~ v0.1.17 · 새로 더해진 것</p>
+      <p class="eyebrow">v0.1.5 ~ v0.1.18 · 새로 더해진 것</p>
       <h2>회사 현황은 첫 화면에,<br>스킬은 이름으로 부릅니다</h2>
       <p class="sub">
         대화 화면과 터미널(<code>coai</code>)이 같은 규칙으로 움직입니다.
@@ -274,6 +274,18 @@ curl -fsSL https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/latest/downlo
 /tmp 정리해 줘</pre>
     </div>
     <div class="points">
+      <div class="pt">
+        <h3>긴 대화를 스스로 정리합니다</h3>
+        <p>대화가 길어져 AI가 한 번에 읽을 수 있는 양에 가까워지면, 지난 대화를 요약해 새로 시작합니다. 대화 기록은 화면에 그대로 남고, 정리한 자리에 구분선이 생겨 요약을 펼쳐 볼 수 있습니다. 정리 시점은 <strong>설정 › 공통 설정 › 긴 대화 정리</strong>에서 고릅니다(50~90%, 기본 70%). 그래도 한도를 넘어 멈추면 요약해 두고, 읽기만 하던 턴이면 새로 이어 답합니다(v0.1.18).</p>
+      </div>
+      <div class="pt">
+        <h3>일 넘기기 상한을 풀 수 있습니다</h3>
+        <p><strong>설정 › 공통 설정 › 직원 사이 일 넘기기</strong>에서 넘기기 깊이와 지시당 턴 상한을 칸마다 <strong>제한 없음</strong>으로 둘 수 있습니다. 다시 제한을 걸면 이미 도는 일에도 곧바로 걸립니다(v0.1.18).</p>
+      </div>
+      <div class="pt">
+        <h3>업데이트를 미뤄도 다시 설치할 수 있습니다</h3>
+        <p>업데이트 알림에서 <strong>나중에</strong>를 눌러도 화면 구석에 작은 알림이 남고, <strong>설정 › 공통 설정 › 앱 업데이트</strong>에서 <strong>지금 확인</strong>·<strong>지금 설치</strong>를 누를 수 있습니다. v0.1.18을 설치한 뒤부터 이렇게 동작합니다(v0.1.18).</p>
+      </div>
       <div class="pt">
         <h3>일을 넘기는 상한을 설정에서 고릅니다</h3>
         <p><strong>설정 › 공통 설정 › 직원 사이 일 넘기기</strong>에서 직원끼리 일을 몇 단계까지 이어 넘길지(2~10, 기본 6)와 지시 하나에 직원이 몇 번까지 일할지(5~60, 기본 20)를 정합니다. 바꾼 값은 다음 지시부터 쓰이고, 이미 도는 일은 시작할 때의 값으로 끝납니다. 사내 계정 서버에서는 관리자가 <strong>관리 › 시스템 관리</strong>에서 정합니다(v0.1.17).</p>
@@ -407,7 +419,7 @@ coai --help</pre>
         <dd>Authenticode 코드 서명을 하지 않았습니다. 그래서 Windows가 만든 사람을 확인해 주지
           않고 SmartScreen이 막습니다. <strong>이 저장소의 릴리스에서 받은 파일만</strong> 쓰시고,
           위의 SHA-256과 대조해 주세요. PowerShell에서
-          <code>Get-FileHash .\Coai_0.1.17_x64-setup.exe -Algorithm SHA256</code>.</dd>
+          <code>Get-FileHash .\Coai_0.1.18_x64-setup.exe -Algorithm SHA256</code>.</dd>
       </div>
       <div class="note">
         <dt>엔진은 따로입니다</dt>
@@ -427,7 +439,7 @@ coai --help</pre>
       </div>
       <div class="note">
         <dt>아직 초기 버전입니다</dt>
-        <dd>v0.1.17입니다. 쓰시다 막히는 곳은 저장소 이슈로 알려 주시면 고치겠습니다.</dd>
+        <dd>v0.1.18입니다. 쓰시다 막히는 곳은 저장소 이슈로 알려 주시면 고치겠습니다.</dd>
       </div>
     </dl>
   </div>
