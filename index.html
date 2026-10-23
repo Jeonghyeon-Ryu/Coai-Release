@@ -224,22 +224,22 @@ footer .grow{margin-left:auto}
       <article class="card">
         <span class="tag">Windows 10/11 · x64</span>
         <h3>Coai 데스크톱</h3>
-        <p class="meta">v0.1.20 · 설치본(.exe) · 약 107MB</p>
-        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.20/Coai_0.1.20_x64-setup.exe">설치본 받기</a>
+        <p class="meta">v0.1.22 · 설치본(.exe) · 약 107MB</p>
+        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.22/Coai_0.1.22_x64-setup.exe">설치본 받기</a>
         <ol class="steps">
           <li><b>1</b><span><strong>실행.</strong> 내려받은 설치본을 두 번 누릅니다.</span></li>
           <li><b>2</b><span><strong>경고 넘기기.</strong> SmartScreen이 막으면 <strong>추가 정보</strong> 다음 <strong>실행</strong>을 누릅니다. 아래를 함께 읽어 주세요.</span></li>
           <li><b>3</b><span><strong>엔진 넣기.</strong> 설정 화면에서 쓰실 엔진 자격을 넣으면 직원이 일을 시작합니다.</span></li>
           <li><b>4</b><span><strong>터미널에서도.</strong> 새로 연 터미널의 프로젝트 폴더에서 <code>coai</code>를 치면 그 폴더의 일을 직원에게 맡깁니다. <a href="#cli">아래</a>를 보세요.</span></li>
         </ol>
-        <p class="hash">SHA-256<br>c7f5c969556e545d4e1d4d64d947842648afaa68f2c7f28b475f8555a94b05db</p>
+        <p class="hash">SHA-256<br>61bf1b0d4fafb90fb80fce67c89e461a80b150f0e377d4cda8d4704220dff135</p>
       </article>
 
       <article class="card">
         <span class="tag">Linux 셀프호스트 · x86-64</span>
         <h3>Coai 서버</h3>
-        <p class="meta">v0.1.20 · tar.gz · 약 151MB · Node 동봉(glibc x86-64)</p>
-        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.20/coai-server-0.1.20-linux-x64.tar.gz">타르볼 받기</a>
+        <p class="meta">v0.1.22 · tar.gz · 약 151MB · Node 동봉(glibc x86-64)</p>
+        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.22/coai-server-0.1.22-linux-x64.tar.gz">타르볼 받기</a>
         <pre class="fold"><span class="c"># 한 줄 설치 — 다시 실행하면 업데이트입니다</span>
 curl -fsSL https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/latest/download/install.sh | bash</pre>
         <ol class="steps">
@@ -249,7 +249,7 @@ curl -fsSL https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/latest/downlo
         </ol>
         <p class="meta" style="margin:14px 0 0">x86-64 · systemd 사용자 세션이 필요합니다. 동봉된 Node는 <strong>glibc</strong>용이라
           Alpine 같은 musl 배포판에서는 시스템 Node 20+ 로 직접 띄워야 합니다.</p>
-        <p class="hash">SHA-256<br>de42b454c2384bc5e6e71e79d0f50c8fe803095aca2ba0d683945b0d69fb72bc</p>
+        <p class="hash">SHA-256<br>5491203332d016e5cd80bce97c79c0ba5a855bd24c266d07cef40e3eb11ced13</p>
       </article>
 
     </div>
@@ -259,7 +259,7 @@ curl -fsSL https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/latest/downlo
 <section id="new">
   <div class="wrap why">
     <div>
-      <p class="eyebrow">v0.1.5 ~ v0.1.20 · 새로 더해진 것</p>
+      <p class="eyebrow">v0.1.5 ~ v0.1.22 · 새로 더해진 것</p>
       <h2>회사 현황은 첫 화면에,<br>스킬은 이름으로 부릅니다</h2>
       <p class="sub">
         대화 화면과 터미널(<code>coai</code>)이 같은 규칙으로 움직입니다.
@@ -274,6 +274,22 @@ curl -fsSL https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/latest/downlo
 /tmp 정리해 줘</pre>
     </div>
     <div class="points">
+      <div class="pt">
+        <h3>vLLM·GLM 직원도 웹을 찾아 읽습니다</h3>
+        <p>Claude가 아닌 엔진(vLLM·GLM·Kimi·OpenRouter·Grok)의 직원도 이제 <strong>웹 검색</strong>과 <strong>주소 읽기</strong>를 씁니다. Coai가 직접 찾아 오므로 따로 깔 것이 없고, 기본은 키 없이 DuckDuckGo·Bing으로 찾습니다. <strong>설정 › 공통 설정 › 웹 검색</strong>에 네이버 검색 API 키(무료)를 넣으면 공식 API로 먼저 찾습니다. 이 컴퓨터와 회사 내부망 주소는 읽지 않고, 웹에서 가져온 글은 지시가 아니라 자료로만 다룹니다(v0.1.22).</p>
+      </div>
+      <div class="pt">
+        <h3>스킬의 부르는 이름을 처음부터 정합니다</h3>
+        <p><strong>새 스킬</strong>을 만들 때 <strong>부르는 이름</strong>(<code>/이름</code>)을 직접 적을 수 있습니다. 비우면 지금처럼 제목에서 만들고, 이미 있는 이름이면 저장 전에 알려 드립니다. 한글 이름도 그대로 씁니다(v0.1.21).</p>
+      </div>
+      <div class="pt">
+        <h3>반복 작업을 고치고, 더 자주 돌립니다</h3>
+        <p><strong>예약 &amp; 반복</strong>의 반복 작업마다 <strong>수정</strong>이 생겼습니다. 새로 만들 때도 <strong>N분마다</strong>·하루 <strong>여러 시각</strong>·스스로 이어 하는 <strong>자율 반복</strong>(최대 회차·금액)을 고를 수 있습니다(v0.1.21).</p>
+      </div>
+      <div class="pt">
+        <h3>직원 순서를 바꿉니다</h3>
+        <p><strong>설정 › 직원 관리</strong>에서 위·아래 화살표로 직원 순서를 바꾸면 사이드바·대화 화면·휴대폰 앱이 그 순서를 따릅니다(v0.1.21).</p>
+      </div>
       <div class="pt">
         <h3>결재를 승인·거절 말고 직접 지시합니다</h3>
         <p>결재에서 <strong>기타</strong>를 누르면 승인·거절 대신 직원에게 "이렇게 해"를 바로 지시합니다. 요청 중 <strong>일부만</strong> 하게 하거나 다른 방법을 지시할 수 있고, 서버가 대신 실행하지 않고 직원이 그 지시대로 하고 보고합니다(v0.1.20).</p>
@@ -455,7 +471,7 @@ coai --help</pre>
         <dd>Authenticode 코드 서명을 하지 않았습니다. 그래서 Windows가 만든 사람을 확인해 주지
           않고 SmartScreen이 막습니다. <strong>이 저장소의 릴리스에서 받은 파일만</strong> 쓰시고,
           위의 SHA-256과 대조해 주세요. PowerShell에서
-          <code>Get-FileHash .\Coai_0.1.20_x64-setup.exe -Algorithm SHA256</code>.</dd>
+          <code>Get-FileHash .\Coai_0.1.22_x64-setup.exe -Algorithm SHA256</code>.</dd>
       </div>
       <div class="note">
         <dt>엔진은 따로입니다</dt>
@@ -475,7 +491,7 @@ coai --help</pre>
       </div>
       <div class="note">
         <dt>아직 초기 버전입니다</dt>
-        <dd>v0.1.19입니다. 쓰시다 막히는 곳은 저장소 이슈로 알려 주시면 고치겠습니다.</dd>
+        <dd>v0.1.22입니다. 쓰시다 막히는 곳은 저장소 이슈로 알려 주시면 고치겠습니다.</dd>
       </div>
     </dl>
   </div>
