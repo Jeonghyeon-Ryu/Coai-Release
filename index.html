@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Coai · 내 컴퓨터에서 도는 AI 직원 회사</title>
-<meta name="description" content="프롬프트 한 줄로 AI 직원 회사를 만들고, 폴더 단위 기억으로 일을 시킵니다. 회사 하나가 폴더 하나이고 모든 기록이 사람이 읽는 파일로 남는 로컬 우선 도구. Windows 설치본과 Linux 셀프호스트 서버.">
+<meta name="description" content="프롬프트 한 줄로 AI 직원 회사를 만들고, 폴더 단위 기억으로 일을 시킵니다. 회사 하나가 폴더 하나이고 모든 기록이 사람이 읽는 파일로 남는 로컬 우선 도구. Windows 설치본과 Linux 셀프호스트 서버, Android 휴대폰 앱.">
 <link rel="canonical" href="https://jeonghyeon-ryu.github.io/Coai-Release/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Coai · 내 컴퓨터에서 도는 AI 직원 회사">
@@ -90,7 +90,8 @@ h2{margin:0 0 14px;font-size:clamp(23px,3vw,32px);line-height:1.3;letter-spacing
 .pt:first-child{border-top:0;padding-top:0}
 .pt h3{margin:0 0 5px;font-size:16.5px;font-weight:650;letter-spacing:-.01em}
 .pt p{margin:0;color:var(--fg-2);font-size:14.5px}
-@media(max-width:860px){.why{grid-template-columns:1fr}}
+/* ⚠ 1fr의 최소 폭은 내용 폭이다 — 안의 pre가 칸을 밀어 390px에서 페이지가 51px 넘쳤다(실측). minmax(0,…)로 맞춘다. */
+@media(max-width:860px){.why{grid-template-columns:minmax(0,1fr)}}
 
 /* 다운로드 — 두 장 */
 .dl{display:grid;gap:18px;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:34px}
@@ -217,29 +218,29 @@ footer .grow{margin-left:auto}
 <section id="download">
   <div class="wrap">
     <h2>다운로드</h2>
-    <p class="sub">두 가지 형태로 씁니다.</p>
+    <p class="sub">PC나 서버에 깔고, 휴대폰 앱으로도 씁니다.</p>
 
     <div class="dl">
 
       <article class="card">
         <span class="tag">Windows 10/11 · x64</span>
         <h3>Coai 데스크톱</h3>
-        <p class="meta">v0.1.23 · 설치본(.exe) · 약 107MB</p>
-        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.23/Coai_0.1.23_x64-setup.exe">설치본 받기</a>
+        <p class="meta">v0.1.24 · 설치본(.exe) · 약 107MB</p>
+        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.24/Coai_0.1.24_x64-setup.exe">설치본 받기</a>
         <ol class="steps">
           <li><b>1</b><span><strong>실행.</strong> 내려받은 설치본을 두 번 누릅니다.</span></li>
           <li><b>2</b><span><strong>경고 넘기기.</strong> SmartScreen이 막으면 <strong>추가 정보</strong> 다음 <strong>실행</strong>을 누릅니다. 아래를 함께 읽어 주세요.</span></li>
           <li><b>3</b><span><strong>엔진 넣기.</strong> 설정 화면에서 쓰실 엔진 자격을 넣으면 직원이 일을 시작합니다.</span></li>
           <li><b>4</b><span><strong>터미널에서도.</strong> 새로 연 터미널의 프로젝트 폴더에서 <code>coai</code>를 치면 그 폴더의 일을 직원에게 맡깁니다. <a href="#cli">아래</a>를 보세요.</span></li>
         </ol>
-        <p class="hash">SHA-256<br>5246afe834f4f3fdea9e3594f4e3b993758d0d91e12c114de9c090b88eb52999</p>
+        <p class="hash">SHA-256<br>e4d20d91291f2340120018d0da8798491570dbf221b6a93cd5b14e3e2c2cf066</p>
       </article>
 
       <article class="card">
         <span class="tag">Linux 셀프호스트 · x86-64</span>
         <h3>Coai 서버</h3>
-        <p class="meta">v0.1.23 · tar.gz · 약 151MB · Node 동봉(glibc x86-64)</p>
-        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.23/coai-server-0.1.23-linux-x64.tar.gz">타르볼 받기</a>
+        <p class="meta">v0.1.24 · tar.gz · 약 151MB · Node 동봉(glibc x86-64)</p>
+        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/download/v0.1.24/coai-server-0.1.24-linux-x64.tar.gz">타르볼 받기</a>
         <pre class="fold"><span class="c"># 한 줄 설치 — 다시 실행하면 업데이트입니다</span>
 curl -fsSL https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/latest/download/install.sh | bash</pre>
         <ol class="steps">
@@ -249,7 +250,21 @@ curl -fsSL https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/latest/downlo
         </ol>
         <p class="meta" style="margin:14px 0 0">x86-64 · systemd 사용자 세션이 필요합니다. 동봉된 Node는 <strong>glibc</strong>용이라
           Alpine 같은 musl 배포판에서는 시스템 Node 20+ 로 직접 띄워야 합니다.</p>
-        <p class="hash">SHA-256<br>b34852a39655f0a83b84bea22fe4428692b4f34fe40f19b1d1361e5380b71f93</p>
+        <p class="hash">SHA-256<br>bec15176bae1beab7d8717fe8e8e56cdef29a16602abf78b2d8fc1cd8e6f335d</p>
+      </article>
+
+      <article class="card">
+        <span class="tag">Android 7.0 이상</span>
+        <h3>Coai 휴대폰 앱</h3>
+        <p class="meta">v0.1.24 · APK · 약 70MB</p>
+        <a class="btn primary" href="https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/latest/download/coai-android.apk">APK 받기</a>
+        <ol class="steps">
+          <li><b>1</b><span><strong>받기.</strong> 휴대폰에서 이 단추를 누르거나, PC 앱의 <strong>설정 › 공통 설정 › 휴대폰 연결 › 앱 받기</strong> QR을 휴대폰 카메라로 찍습니다.</span></li>
+          <li><b>2</b><span><strong>설치.</strong> 받은 파일을 엽니다. <strong>출처를 알 수 없는 앱</strong> 안내가 뜨면 그 앱(브라우저·내 파일)에 설치 허용을 켜고 돌아와 <strong>설치</strong>를 누릅니다.</span></li>
+          <li><b>3</b><span><strong>연결.</strong> 앱에서 <strong>내 PC 연결</strong>로 PC 앱과 묶거나, 사내 Coai 서버 주소(https)를 넣고 로그인합니다.</span></li>
+        </ol>
+        <p class="meta" style="margin:14px 0 0">Play 스토어 밖에서 받는 앱입니다. 아이폰 앱은 아직 없습니다. 서버 주소는 <strong>https</strong>여야 붙습니다(안드로이드가 평문 http를 막습니다).</p>
+        <p class="hash">SHA-256<br>95ae3c840e18746b9fa06dd664e957ac6b84f638ab97468ac268284c4a4662f2</p>
       </article>
 
     </div>
@@ -259,7 +274,7 @@ curl -fsSL https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/latest/downlo
 <section id="new">
   <div class="wrap why">
     <div>
-      <p class="eyebrow">v0.1.5 ~ v0.1.23 · 새로 더해진 것</p>
+      <p class="eyebrow">v0.1.5 ~ v0.1.24 · 새로 더해진 것</p>
       <h2>회사 현황은 첫 화면에,<br>스킬은 이름으로 부릅니다</h2>
       <p class="sub">
         대화 화면과 터미널(<code>coai</code>)이 같은 규칙으로 움직입니다.
@@ -274,6 +289,10 @@ curl -fsSL https://github.com/Jeonghyeon-Ryu/Coai-Release/releases/latest/downlo
 /tmp 정리해 줘</pre>
     </div>
     <div class="points">
+      <div class="pt">
+        <h3>휴대폰 앱을 QR로 받습니다</h3>
+        <p>안드로이드 휴대폰 앱을 이제 릴리스마다 함께 올립니다. PC 앱의 <strong>설정 › 공통 설정 › 휴대폰 연결</strong>(사내 계정 서버는 같은 탭의 <strong>휴대폰 앱</strong> 칸)에서 <strong>앱 받기</strong>를 누르면 QR이 뜨고, 휴대폰 카메라로 찍으면 바로 받습니다. 위 다운로드의 <strong>APK 받기</strong>도 같은 파일입니다(v0.1.24).</p>
+      </div>
       <div class="pt">
         <h3>대화를 새로 시작합니다</h3>
         <p>대화 화면 위의 <strong>새로 시작</strong>(휴대폰 앱은 대화 머리말의 단추, 터미널은 <code>/clear</code>)을 누르면 그 직원이 지난 대화를 잊고 다음 지시부터 새로 시작합니다. 대화 기록은 화면에 그대로 남고 그 자리에 구분선이 생깁니다. 기억(노트·일지)과 이미 넘긴 일·예약은 그대로이고, 직원이 일하는 중에는 누를 수 없습니다(v0.1.23).</p>
@@ -479,7 +498,7 @@ coai --help</pre>
         <dd>Authenticode 코드 서명을 하지 않았습니다. 그래서 Windows가 만든 사람을 확인해 주지
           않고 SmartScreen이 막습니다. <strong>이 저장소의 릴리스에서 받은 파일만</strong> 쓰시고,
           위의 SHA-256과 대조해 주세요. PowerShell에서
-          <code>Get-FileHash .\Coai_0.1.23_x64-setup.exe -Algorithm SHA256</code>.</dd>
+          <code>Get-FileHash .\Coai_0.1.24_x64-setup.exe -Algorithm SHA256</code>.</dd>
       </div>
       <div class="note">
         <dt>엔진은 따로입니다</dt>
@@ -492,6 +511,12 @@ coai --help</pre>
           직접 설치</strong>해 주세요 — v0.1.0에는 업데이트 기능 자체가 없습니다.</dd>
       </div>
       <div class="note">
+        <dt>휴대폰 앱은 스토어 밖에서 받습니다</dt>
+        <dd>Play 스토어를 거치지 않고 이 저장소의 릴리스에서 받는 APK입니다. 앱이 스스로 업데이트하지 않으니
+          새 버전은 같은 주소에서 다시 받아 <strong>그 위에 설치</strong>해 주세요 — 같은 열쇠로 서명돼 있어 로그인과 연결이 그대로 남습니다.
+          서명 인증서의 SHA-256은 <code style="word-break:break-all">303f225816e467731594bbc6349d982440cea0e493aecaf2afa2da25fe866ee0</code>입니다.</dd>
+      </div>
+      <div class="note">
         <dt>셀프호스트는 내 기계에만 열립니다</dt>
         <dd>인증 없이 한 사람이 쓰는 서버라서 <code>127.0.0.1</code>에만 붙습니다. 포트를 공개로 열면 회사 전체(직원·기억·자격)가
           그대로 노출됩니다. 다른 컴퓨터에서는 SSH 터널로 쓰세요 —
@@ -499,7 +524,7 @@ coai --help</pre>
       </div>
       <div class="note">
         <dt>아직 초기 버전입니다</dt>
-        <dd>v0.1.23입니다. 쓰시다 막히는 곳은 저장소 이슈로 알려 주시면 고치겠습니다.</dd>
+        <dd>v0.1.24입니다. 쓰시다 막히는 곳은 저장소 이슈로 알려 주시면 고치겠습니다.</dd>
       </div>
     </dl>
   </div>
