@@ -63,8 +63,9 @@ footer a{color:var(--fg-2);text-decoration:none}
   <p class="meta">Coai 휴대폰 앱(Android · 패키지 dev.coai.mobile) · 운영: RSCC · 시행일 2026년 10월 27일</p>
 
   <div class="box"><p><strong>요약</strong> — Coai 앱은 사용자가 직접 정한 Coai 서버(회사의 사내 계정 서버나 사용자 자신의 PC)에 붙는 창구입니다.
-  앱 운영자(RSCC)는 사용자의 정보를 받는 서버를 따로 두지 않으며, 광고·분석·위치 추적을 하지 않습니다.
-  사용자가 입력하거나 보낸 정보는 <strong>사용자가 연결한 서버로만</strong> 갑니다.</p></div>
+  운영자(RSCC)는 사용자의 대화·파일·계정을 받는 서버를 두지 않으며, 광고·분석·위치 추적을 하지 않습니다.
+  사용자가 입력하거나 보낸 정보는 <strong>사용자가 연결한 서버로만</strong> 갑니다. 운영자가 제공하는 Coai 중계 서버를 거치는 경우에도
+  내용은 종단 간 암호화되어 운영자가 읽을 수 없습니다.</p></div>
 
   <h2>1. 앱이 다루는 정보와 가는 곳</h2>
   <table>
@@ -72,7 +73,7 @@ footer a{color:var(--fg-2);text-decoration:none}
     <tr><th>대화와 첨부</th><td>직원에게 보낸 지시, 사용자가 고른 사진·파일은 연결한 서버로 보내고, 답과 결재 목록은 그 서버에서 받아 화면에 보여 줍니다.</td></tr>
     <tr><th>카메라</th><td>PC 화면의 QR 코드를 읽어 휴대폰을 PC에 연결할 때만 씁니다. 사진을 찍거나 저장하거나 어디로 보내지 않습니다.</td></tr>
     <tr><th>알림</th><td>알림을 켜면 기기의 알림 토큰을 연결한 서버에 등록합니다. 알림은 Expo 푸시 서비스와 Google Firebase Cloud Messaging을 거쳐 전달되며, 내용은 직원 이름과 '답장이 왔습니다' 같은 정해진 한 줄뿐입니다(대화 내용은 담지 않습니다). 로그아웃하면 등록을 지웁니다.</td></tr>
-    <tr><th>내 PC 연결</th><td>PC와 휴대폰은 회사 서버의 중계를 거쳐 주고받지만 <strong>종단 간 암호화</strong>되어 중계 서버는 내용을 읽을 수 없습니다. 연결에 쓰는 기기 열쇠는 휴대폰의 보안 저장소(Android Keystore)에만 둡니다.</td></tr>
+    <tr><th>내 PC 연결</th><td>PC와 휴대폰은 중계 서버(회사 서버, 또는 운영자가 제공하는 Coai 중계 서버 — 아래 5절)를 거쳐 주고받지만 <strong>종단 간 암호화</strong>되어 중계 서버는 내용을 읽을 수 없습니다. 연결에 쓰는 기기 열쇠는 휴대폰의 보안 저장소(Android Keystore)에만 둡니다.</td></tr>
     <tr><th>기기 안에만</th><td>연결한 서버 목록, 로그인 세션, 아직 보내지 못한 지시와 쓰던 글, 접기 같은 화면 설정. 앱을 지우면 함께 지워집니다.</td></tr>
   </table>
 
@@ -97,13 +98,22 @@ footer a{color:var(--fg-2);text-decoration:none}
     <li>Google Firebase Cloud Messaging — <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
   </ul>
 
-  <h2>5. 어린이</h2>
+  <h2>5. 운영자의 Coai 중계 서버</h2>
+  <p>PC의 Coai에서 '휴대폰 연결'에 운영자가 제공하는 Coai 중계 서버를 쓰는 경우에만 해당합니다.</p>
+  <ul>
+    <li><strong>중계 서버가 보는 것</strong>: 접속한 IP 주소, 시각, 주고받은 데이터의 크기, 우편함 주소(무작위로 만든 식별자). 대화·파일·계정 같은 내용은 암호문이라 읽을 수 없습니다.</li>
+    <li><strong>보관</strong>: 암호문은 상대가 가져갈 때까지 메모리에만 두고 최대 90초 뒤 버립니다. IP 주소는 남용을 막는 횟수 제한에만 메모리에서 1분~1시간 쓰고 파일로 남기지 않습니다. 내용이나 접속 기록을 따로 저장하지 않습니다.</li>
+    <li><strong>사용 신청</strong>: 중계 서버는 승인을 받아 씁니다. PC의 Coai에서 신청할 때 <strong>이름, 이메일, 쓰임(선택)</strong>을 받아 운영자의 중계 서버에 보관하며, 승인 판단과 연락에만 씁니다. 신청 정보는 그 PC의 우편함 주소와 함께 남고 PC의 열쇠는 보관하지 않습니다.</li>
+    <li><strong>삭제</strong>: 아래 문의 이메일로 요청하면 신청 정보를 지우고 승인을 거둡니다. 운영자가 중계 서비스를 끝내면 신청 정보도 함께 지웁니다.</li>
+  </ul>
+
+  <h2>6. 어린이</h2>
   <p>이 앱은 업무용이며 만 14세 미만 어린이를 대상으로 하지 않습니다.</p>
 
-  <h2>6. 바뀔 때</h2>
+  <h2>7. 바뀔 때</h2>
   <p>이 방침이 바뀌면 이 페이지에 새 시행일과 함께 올립니다.</p>
 
-  <h2>7. 문의</h2>
+  <h2>8. 문의</h2>
   <p>RSCC · <a href="mailto:vxxv1233@gmail.com">vxxv1233@gmail.com</a></p>
 </section>
 
@@ -114,8 +124,9 @@ footer a{color:var(--fg-2);text-decoration:none}
   <p class="meta">Coai mobile app (Android · package dev.coai.mobile) · Operated by RSCC · Effective October 27, 2026</p>
 
   <div class="box"><p><strong>Summary</strong> — The Coai app is a client for a Coai server you choose yourself (your company's account server or your own PC).
-  The operator (RSCC) runs no server that receives your data and does no advertising, analytics or location tracking.
-  What you enter or send goes <strong>only to the server you connected to</strong>.</p></div>
+  The operator (RSCC) runs no server that receives your chats, files or account, and does no advertising, analytics or location tracking.
+  What you enter or send goes <strong>only to the server you connected to</strong>. Even when traffic passes through the Coai relay server the operator provides,
+  it is end-to-end encrypted and the operator cannot read it.</p></div>
 
   <h2>1. What the app handles and where it goes</h2>
   <table>
@@ -123,7 +134,7 @@ footer a{color:var(--fg-2);text-decoration:none}
     <tr><th>Chats and attachments</th><td>Instructions you send to staff and photos or files you pick are sent to the server you connected to; replies and approvals are fetched from that server.</td></tr>
     <tr><th>Camera</th><td>Used only to read the QR code on your PC screen to link this phone to your PC. No photos are taken, stored or sent.</td></tr>
     <tr><th>Notifications</th><td>If you turn notifications on, the device's push token is registered with the server you connected to. Notifications are delivered through the Expo push service and Google Firebase Cloud Messaging and contain only a staff name and a fixed line such as "New reply" — never chat content. Signing out removes the registration.</td></tr>
-    <tr><th>Linking your PC</th><td>Your PC and phone exchange messages through a relay on the company server, <strong>end-to-end encrypted</strong> — the relay cannot read them. The device key used for linking stays in the phone's secure storage (Android Keystore).</td></tr>
+    <tr><th>Linking your PC</th><td>Your PC and phone exchange messages through a relay server (your company server, or the Coai relay server the operator provides — section 5), <strong>end-to-end encrypted</strong> — the relay cannot read them. The device key used for linking stays in the phone's secure storage (Android Keystore).</td></tr>
     <tr><th>On the device only</th><td>The list of servers you added, your sign-in session, instructions not yet sent and drafts, and display settings. They are removed when you uninstall the app.</td></tr>
   </table>
 
@@ -148,13 +159,22 @@ footer a{color:var(--fg-2);text-decoration:none}
     <li>Google Firebase Cloud Messaging — <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
   </ul>
 
-  <h2>5. Children</h2>
+  <h2>5. The operator's Coai relay server</h2>
+  <p>This applies only if Phone connection in Coai on your PC uses the Coai relay server provided by the operator.</p>
+  <ul>
+    <li><strong>What the relay sees</strong>: connecting IP addresses, times, the size of data exchanged and mailbox addresses (randomly generated identifiers). Content such as chats, files and accounts is ciphertext it cannot read.</li>
+    <li><strong>Retention</strong>: ciphertext is held in memory only until the other side picks it up and is dropped after at most 90 seconds. IP addresses are used in memory for abuse rate limits for one minute to one hour and are not written to disk. No content or access logs are stored.</li>
+    <li><strong>Application</strong>: the relay is used with approval. When you apply from Coai on your PC, your <strong>name, email and purpose (optional)</strong> are kept on the operator's relay server and used only to review the application and contact you. The application is stored with that PC's mailbox address; the PC's key is not kept.</li>
+    <li><strong>Deletion</strong>: email the contact below to have your application deleted and approval withdrawn. If the operator ends the relay service, applications are deleted with it.</li>
+  </ul>
+
+  <h2>6. Children</h2>
   <p>This is a work app and is not directed at children under 14.</p>
 
-  <h2>6. Changes</h2>
+  <h2>7. Changes</h2>
   <p>If this policy changes, the new version will be posted on this page with a new effective date.</p>
 
-  <h2>7. Contact</h2>
+  <h2>8. Contact</h2>
   <p>RSCC · <a href="mailto:vxxv1233@gmail.com">vxxv1233@gmail.com</a></p>
 </section>
 </main>
