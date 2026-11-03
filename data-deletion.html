@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coai 데이터 삭제</title>
+<meta name="description" content="Coai 휴대폰 앱(Android)의 데이터 삭제 요청 방법 — 데이터가 있는 곳마다 지우는 법과 보관 기간.">
+<link rel="canonical" href="https://jeonghyeon-ryu.github.io/Coai-Release/privacy.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 19 13 29 16 19 19 16 29 13 19 3 16 13 13Z' fill='%23e8e8e8'/%3E%3C/svg%3E">
+<style>
+/* 랜딩(index.html)과 같은 토큰 · 다크 하나 · 폰트를 네트워크로 불러오지 않는다. */
+:root{
+  --bg:#0f0f10; --surface:#151517; --line:#2a2a2e; --line-soft:#212125;
+  --fg:#ededee; --fg-2:#a8a8ad; --fg-3:#76767d;
+  --r:14px;
+  --sans:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.7;
+  letter-spacing:-.005em;word-break:keep-all;overflow-wrap:anywhere;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{width:100%;max-width:760px;margin:0 auto;padding:0 20px}
+.nav{height:64px;display:flex;align-items:center;border-bottom:1px solid var(--line-soft)}
+.brand{display:inline-flex;align-items:center;gap:9px;font-weight:700;letter-spacing:-.02em;text-decoration:none;font-size:17px}
+.brand svg{width:19px;height:19px;flex:none}
+.lang{margin-left:auto;font-size:14px;color:var(--fg-2)}
+.lang a{text-decoration:none;color:var(--fg-2)} .lang a:hover{color:var(--fg)}
+main{padding:48px 0 24px}
+h1{font-size:30px;line-height:1.3;letter-spacing:-.025em;margin:0 0 8px}
+.meta{color:var(--fg-3);font-size:14px;margin:0 0 36px}
+h2{font-size:19px;letter-spacing:-.015em;margin:40px 0 10px}
+p,li{color:var(--fg-2)}
+strong{color:var(--fg);font-weight:600}
+ul{padding-left:20px;margin:8px 0}
+li{margin:6px 0}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;margin:18px 0}
+.box p{margin:0}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:12px 0}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-top:1px solid var(--line-soft)}
+th{color:var(--fg);font-weight:600;white-space:nowrap}
+td{color:var(--fg-2)}
+@media(max-width:560px){table,tbody,tr,th,td{display:block}th{padding-bottom:0}td{border-top:0;padding-top:4px}}
+hr{border:0;border-top:1px solid var(--line);margin:64px 0 0}
+footer{padding:28px 0 60px;color:var(--fg-3);font-size:13.5px}
+footer a{color:var(--fg-2);text-decoration:none}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap" style="display:flex;align-items:center">
+    <a class="brand" href="./">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 19 13 29 16 19 19 16 29 13 19 3 16 13 13Z" fill="currentColor"/></svg>
+      Coai
+    </a>
+    <span class="lang"><a href="#ko">한국어</a> · <a href="#en">English</a></span>
+  </div>
+</header>
+
+<main class="wrap">
+<section id="ko" lang="ko">
+  <h1>데이터 삭제 요청</h1>
+  <p class="meta">Coai 휴대폰 앱(Android · 패키지 dev.coai.mobile) · 개발·운영: RSCC</p>
+
+  <div class="box"><p><strong>요약</strong> — Coai 앱의 계정·대화·파일은 운영자(RSCC)가 아니라 <strong>사용자가 연결한 서버</strong>(회사의 Coai 서버 또는 사용자 자신의 PC)에 있습니다.
+  그래서 데이터가 있는 곳에 따라 지우는 방법이 셋으로 나뉩니다.</p></div>
+
+  <h2>1. 휴대폰에 있는 데이터</h2>
+  <ul>
+    <li><strong>무엇</strong>: 서버 주소, 로그인 세션, 보내지 못한 지시(대기열), 쓰던 글, 알림 등록.</li>
+    <li><strong>지우는 법</strong>: 앱의 <strong>설정 › 로그아웃</strong>을 누르면 그 서버의 로그인 세션과 알림 등록이 지워집니다. 앱을 삭제하면 기기에 남은 Coai 데이터가 모두 지워집니다.</li>
+    <li><strong>보관</strong>: 따로 남기지 않습니다.</li>
+  </ul>
+
+  <h2>2. 회사 서버 또는 내 PC에 있는 데이터</h2>
+  <ul>
+    <li><strong>무엇</strong>: 계정(이메일), 직원과의 대화, 첨부한 사진·파일, 결재 기록.</li>
+    <li><strong>지우는 법</strong>: 회사 서버라면 <strong>그 서버의 관리자</strong>에게 계정·데이터 삭제를 요청하세요. 내 PC라면 PC의 Coai 앱에서 대화나 회사를 지우면 됩니다.</li>
+    <li><strong>보관</strong>: 보관과 삭제는 그 서버를 운영하는 쪽(회사 또는 사용자 본인)이 정합니다. 운영자(RSCC)는 이 데이터를 볼 수도 지울 수도 없습니다.</li>
+  </ul>
+
+  <h2>3. 운영자의 Coai 중계 서버에 있는 데이터</h2>
+  <ul>
+    <li><strong>무엇</strong>: 중계 서버 사용 신청 정보(이름 · 이메일 · 쓰임)와, 동의한 경우의 사용량 요약(날짜별 턴 수와 토큰 수).</li>
+    <li><strong>지우는 법</strong>: <a href="mailto:vxxv1233@gmail.com">vxxv1233@gmail.com</a>으로 신청할 때 쓴 이름과 이메일을 적어 삭제를 요청하세요. 사용량 요약은 PC의 Coai 설정에서 사용량 보내기를 끄면 바로 지워집니다.</li>
+    <li><strong>보관</strong>: 요청을 받으면 30일 안에 지우고 승인을 거둡니다. 지운 정보는 따로 보관하지 않습니다. 중계를 지나는 대화 내용은 암호문이라 운영자가 읽을 수 없고 저장하지도 않습니다.</li>
+  </ul>
+
+  <p>자세한 내용은 <a href="privacy.html">개인정보처리방침</a>을 보세요.</p>
+</section>
+
+<hr>
+
+<section id="en" lang="en">
+  <h1 style="margin-top:56px">Data deletion</h1>
+  <p class="meta">Coai mobile app (Android · package dev.coai.mobile) · Developed and operated by RSCC</p>
+
+  <div class="box"><p><strong>Summary</strong> — Your Coai account, chats and files are not held by the operator (RSCC) but by <strong>the server you connect to</strong> (your company's Coai server or your own PC).
+  How to delete them depends on where the data lives.</p></div>
+
+  <h2>1. Data on your phone</h2>
+  <ul>
+    <li><strong>What</strong>: server address, sign-in session, unsent instructions (queue), drafts, notification registration.</li>
+    <li><strong>How</strong>: tap <strong>Settings › Sign out</strong> in the app to delete the sign-in session and notification registration for that server. Uninstalling the app deletes all Coai data on the device.</li>
+    <li><strong>Retention</strong>: nothing is kept.</li>
+  </ul>
+
+  <h2>2. Data on your company server or your PC</h2>
+  <ul>
+    <li><strong>What</strong>: account (email), chats with staff, attached photos and files, approval records.</li>
+    <li><strong>How</strong>: for a company server, ask <strong>that server's administrator</strong> to delete your account and data. For your own PC, delete chats or the company in the Coai desktop app.</li>
+    <li><strong>Retention</strong>: retention and deletion are decided by whoever runs that server (your company or you). The operator (RSCC) can neither see nor delete this data.</li>
+  </ul>
+
+  <h2>3. Data on the operator's Coai relay server</h2>
+  <ul>
+    <li><strong>What</strong>: your relay application (name · email · purpose) and, if you agreed, the usage summary (turns and tokens per day).</li>
+    <li><strong>How</strong>: email <a href="mailto:vxxv1233@gmail.com">vxxv1233@gmail.com</a> with the name and email you applied with and ask for deletion. The usage summary is deleted immediately when you turn off usage sharing in Coai settings on your PC.</li>
+    <li><strong>Retention</strong>: we delete it within 30 days of your request and withdraw the approval; nothing is kept afterwards. Content passing through the relay is ciphertext the operator cannot read and is not stored.</li>
+  </ul>
+
+  <p>See the <a href="privacy.html">Privacy Policy</a> for details.</p>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">MIT License · Copyright (c) 2026 RSCC · <a href="./">Coai</a></div>
+</footer>
+</body>
+</html>
