@@ -60,7 +60,7 @@ footer a{color:var(--fg-2);text-decoration:none}
 <main class="wrap">
 <section id="ko" lang="ko">
   <h1>개인정보처리방침</h1>
-  <p class="meta">Coai 휴대폰 앱(Android · 패키지 dev.coai.mobile) · 운영: RSCC · 시행일 2026년 11월 2일</p>
+  <p class="meta">Coai 휴대폰 앱(Android · 패키지 dev.coai.mobile) · 운영: RSCC · 시행일 2026년 11월 6일</p>
 
   <div class="box"><p><strong>요약</strong> — Coai 앱은 사용자가 직접 정한 Coai 서버(회사의 사내 계정 서버나 사용자 자신의 PC)에 붙는 창구입니다.
   운영자(RSCC)는 사용자의 대화·파일·계정을 받는 서버를 두지 않으며, 광고·분석·위치 추적을 하지 않습니다.
@@ -74,6 +74,7 @@ footer a{color:var(--fg-2);text-decoration:none}
     <tr><th>카메라</th><td>PC 화면의 QR 코드를 읽어 휴대폰을 PC에 연결할 때만 씁니다. 사진을 찍거나 저장하거나 어디로 보내지 않습니다.</td></tr>
     <tr><th>알림</th><td>알림을 켜면 기기의 알림 토큰을 연결한 서버에 등록합니다. 알림은 Expo 푸시 서비스와 Google Firebase Cloud Messaging을 거쳐 전달되며, 내용은 직원 이름과 '답장이 왔습니다' 같은 정해진 한 줄뿐입니다(대화 내용은 담지 않습니다). 로그아웃하면 등록을 지웁니다.</td></tr>
     <tr><th>내 PC 연결</th><td>PC와 휴대폰은 중계 서버(회사 서버, 또는 운영자가 제공하는 Coai 중계 서버 — 아래 5절)를 거쳐 주고받지만 <strong>종단 간 암호화</strong>되어 중계 서버는 내용을 읽을 수 없습니다. 연결에 쓰는 기기 열쇠는 휴대폰의 보안 저장소(Android Keystore)에만 둡니다.</td></tr>
+    <tr><th>새 버전 확인</th><td>앱을 켤 때와 켜 둔 동안 여섯 시간마다 새 버전이 있는지 묻습니다. Play 스토어에서 받은 앱은 Google Play에 묻고, 그 밖의 앱은 이 앱의 공개 배포 페이지(GitHub의 버전 목록 파일)에 묻고 새 버전이 있으면 Google Play에 이 앱의 공개 페이지가 있는지 확인합니다. 이 요청에는 대화·계정·기기 정보를 담지 않습니다(통신에 따라가는 IP 주소 같은 접속 정보는 그 서비스에 남을 수 있습니다).</td></tr>
     <tr><th>기기 안에만</th><td>연결한 서버 목록, 로그인 세션, 아직 보내지 못한 지시와 쓰던 글, 접기 같은 화면 설정. 앱을 지우면 함께 지워집니다.</td></tr>
   </table>
 
@@ -92,10 +93,12 @@ footer a{color:var(--fg-2);text-decoration:none}
   </ul>
 
   <h2>4. 제3자 서비스</h2>
-  <p>알림 전달에만 아래 서비스를 씁니다. 알림 토큰과 위의 정해진 알림 문구만 전달됩니다.</p>
+  <p>아래 서비스를 씁니다. 알림 전달에는 알림 토큰과 위의 정해진 알림 문구만, 새 버전 확인에는 그 요청만 전달됩니다.</p>
   <ul>
-    <li>Expo 푸시 서비스 (650 Industries, Inc.) — <a href="https://expo.dev/privacy">expo.dev/privacy</a></li>
-    <li>Google Firebase Cloud Messaging — <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
+    <li>Expo 푸시 서비스 (650 Industries, Inc.) — 알림 전달 — <a href="https://expo.dev/privacy">expo.dev/privacy</a></li>
+    <li>Google Firebase Cloud Messaging — 알림 전달 — <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
+    <li>Google Play — 새 버전 확인 — <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
+    <li>GitHub (GitHub, Inc.) — 새 버전 확인 — <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub 개인정보 보호정책</a></li>
   </ul>
 
   <h2>5. 운영자의 Coai 중계 서버</h2>
@@ -122,7 +125,7 @@ footer a{color:var(--fg-2);text-decoration:none}
 
 <section id="en" lang="en">
   <h1 style="margin-top:56px">Privacy Policy</h1>
-  <p class="meta">Coai mobile app (Android · package dev.coai.mobile) · Operated by RSCC · Effective November 2, 2026</p>
+  <p class="meta">Coai mobile app (Android · package dev.coai.mobile) · Operated by RSCC · Effective November 6, 2026</p>
 
   <div class="box"><p><strong>Summary</strong> — The Coai app is a client for a Coai server you choose yourself (your company's account server or your own PC).
   The operator (RSCC) runs no server that receives your chats, files or account, and does no advertising, analytics or location tracking.
@@ -136,6 +139,7 @@ footer a{color:var(--fg-2);text-decoration:none}
     <tr><th>Camera</th><td>Used only to read the QR code on your PC screen to link this phone to your PC. No photos are taken, stored or sent.</td></tr>
     <tr><th>Notifications</th><td>If you turn notifications on, the device's push token is registered with the server you connected to. Notifications are delivered through the Expo push service and Google Firebase Cloud Messaging and contain only a staff name and a fixed line such as "New reply" — never chat content. Signing out removes the registration.</td></tr>
     <tr><th>Linking your PC</th><td>Your PC and phone exchange messages through a relay server (your company server, or the Coai relay server the operator provides — section 5), <strong>end-to-end encrypted</strong> — the relay cannot read them. The device key used for linking stays in the phone's secure storage (Android Keystore).</td></tr>
+    <tr><th>Update check</th><td>When the app starts, and every six hours while it is open, it checks for a new version. An app installed from Google Play asks Google Play; any other install asks this app's public release page (the version list file on GitHub) and, if a new version exists, checks whether this app has a public Google Play page. These requests carry no chats, account, or device information (connection details such as your IP address may be logged by those services).</td></tr>
     <tr><th>On the device only</th><td>The list of servers you added, your sign-in session, instructions not yet sent and drafts, and display settings. They are removed when you uninstall the app.</td></tr>
   </table>
 
@@ -154,10 +158,12 @@ footer a{color:var(--fg-2);text-decoration:none}
   </ul>
 
   <h2>4. Third-party services</h2>
-  <p>Used only to deliver notifications; only the push token and the fixed notification line above are passed on.</p>
+  <p>We use the services below. Notifications pass on only the push token and the fixed notification line above; update checks pass on only the request itself.</p>
   <ul>
-    <li>Expo push service (650 Industries, Inc.) — <a href="https://expo.dev/privacy">expo.dev/privacy</a></li>
-    <li>Google Firebase Cloud Messaging — <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
+    <li>Expo push service (650 Industries, Inc.) — notifications — <a href="https://expo.dev/privacy">expo.dev/privacy</a></li>
+    <li>Google Firebase Cloud Messaging — notifications — <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
+    <li>Google Play — update check — <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
+    <li>GitHub (GitHub, Inc.) — update check — <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub General Privacy Statement</a></li>
   </ul>
 
   <h2>5. The operator's Coai relay server</h2>
