@@ -63,26 +63,26 @@ footer a{color:var(--fg-2);text-decoration:none}
   <p class="meta">Coai 휴대폰 앱(Android · 패키지 dev.coai.mobile) · 운영: RSCC · 시행일 2026년 11월 8일</p>
 
   <div class="box"><p><strong>요약</strong> — Coai 앱은 사용자가 직접 정한 Coai 서버(회사의 사내 계정 서버나 사용자 자신의 PC)에 붙는 창구입니다.
-  운영자(RSCC)는 사용자의 대화·파일·계정을 받는 서버를 두지 않으며, 광고·분석·위치 추적을 하지 않습니다.
+  운영자(RSCC)는 사용자의 대화, 파일, 계정을 받는 서버를 두지 않으며, 광고, 분석, 위치 추적을 하지 않습니다.
   사용자가 입력하거나 보낸 정보는 <strong>사용자가 연결한 서버로만</strong> 갑니다. 운영자가 제공하는 Coai 중계 서버를 거치는 경우에도
   내용은 종단 간 암호화되어 운영자가 읽을 수 없습니다.</p></div>
 
   <h2>1. 앱이 다루는 정보와 가는 곳</h2>
   <table>
     <tr><th>계정</th><td>로그인할 때 넣은 이메일과 비밀번호는 연결한 서버로만 보냅니다. 앱은 비밀번호를 저장하지 않고, 서버가 준 로그인 세션만 기기에 보관합니다.</td></tr>
-    <tr><th>대화와 첨부</th><td>직원에게 보낸 지시, 사용자가 고른 사진·파일은 연결한 서버로 보내고, 답과 결재 목록은 그 서버에서 받아 화면에 보여 줍니다.</td></tr>
-    <tr><th>카메라</th><td>PC 화면의 QR 코드를 읽어 휴대폰을 PC에 연결할 때만 씁니다. 사진을 찍거나 저장하거나 어디로 보내지 않습니다.</td></tr>
-    <tr><th>알림</th><td>알림을 켜면 기기의 알림 토큰을 연결한 서버에 등록합니다. 알림은 Expo 푸시 서비스와 Google Firebase Cloud Messaging을 거쳐 전달되며, 내용은 직원 이름과 '답장이 왔습니다' 같은 정해진 한 줄뿐입니다(대화 내용은 담지 않습니다). 로그아웃하면 등록을 지웁니다.</td></tr>
-    <tr><th>내 PC 연결</th><td>PC와 휴대폰은 중계 서버(회사 서버, 또는 운영자가 제공하는 Coai 중계 서버 — 아래 5절)를 거쳐 주고받지만 <strong>종단 간 암호화</strong>되어 중계 서버는 내용을 읽을 수 없습니다. 연결에 쓰는 기기 열쇠는 휴대폰의 보안 저장소(Android Keystore)에만 둡니다.</td></tr>
-    <tr><th>새 버전 확인</th><td>앱을 켤 때와 켜 둔 동안 여섯 시간마다 새 버전이 있는지 묻습니다. Play 스토어에서 받은 앱은 Google Play에 묻고, 그 밖의 앱은 이 앱의 공개 배포 페이지(GitHub의 버전 목록 파일)에 묻고 새 버전이 있으면 Google Play에 이 앱의 공개 페이지가 있는지 확인합니다. 이 요청에는 대화·계정·기기 정보를 담지 않습니다(통신에 따라가는 IP 주소 같은 접속 정보는 그 서비스에 남을 수 있습니다).</td></tr>
+    <tr><th>대화와 첨부</th><td>직원에게 보낸 지시와 사용자가 고른 사진, 파일은 연결한 서버로 보내고, 답과 결재 목록은 그 서버에서 받아 화면에 보여 줍니다.</td></tr>
+    <tr><th>카메라</th><td>PC 화면의 QR 코드를 읽어 휴대폰을 PC에 연결할 때만 씁니다. 사진을 찍거나 저장하거나 어디로도 보내지 않습니다.</td></tr>
+    <tr><th>알림</th><td>알림을 켜면 기기의 알림 토큰을 연결한 서버에 등록합니다. 알림은 Expo 푸시 서비스와 Google Firebase Cloud Messaging을 거쳐 전달되며, 내용은 직원 이름과 '답장이 왔습니다' 같은 정해진 한 줄뿐이고, 대화 내용은 담지 않습니다. 로그아웃하면 등록을 지웁니다.</td></tr>
+    <tr><th>내 PC 연결</th><td>PC와 휴대폰은 중계 서버(회사 서버 또는 운영자가 제공하는 Coai 중계 서버, 아래 5절 참고)를 거쳐 데이터를 주고받지만, <strong>종단 간 암호화</strong>되어 있어 중계 서버는 내용을 읽을 수 없습니다. 연결에 쓰는 기기 열쇠는 휴대폰의 보안 저장소(Android Keystore)에만 둡니다.</td></tr>
+    <tr><th>새 버전 확인</th><td>앱을 켤 때와, 켜 둔 동안 여섯 시간마다 새 버전이 있는지 묻습니다. Play 스토어에서 받은 앱은 Google Play에 묻습니다. 그 밖의 앱은 이 앱의 공개 배포 페이지(GitHub의 버전 목록 파일)에 묻고, 새 버전이 있으면 Google Play에 이 앱의 공개 페이지가 있는지 확인합니다. 이 요청에는 대화, 계정, 기기 정보를 담지 않습니다. 다만 통신 과정에서 함께 전달되는 IP 주소 같은 접속 정보는 그 서비스에 남을 수 있습니다.</td></tr>
     <tr><th>기기 안에만</th><td>연결한 서버 목록, 로그인 세션, 아직 보내지 못한 지시와 쓰던 글, 접기 같은 화면 설정. 앱을 지우면 함께 지워집니다.</td></tr>
   </table>
 
   <h2>2. 수집하지 않는 것</h2>
   <ul>
-    <li>광고 식별자, 사용 분석, 오류 보고를 운영자에게 보내지 않습니다. (PC의 Coai가 동의를 받은 경우에만 보내는 사용량 요약은 5절에 따로 적었습니다.)</li>
+    <li>광고 식별자, 사용 분석, 오류 보고를 운영자에게 보내지 않습니다. PC의 Coai가 동의를 받은 경우에만 보내는 사용량 요약은 5절에 따로 적었습니다.</li>
     <li>위치, 연락처, 통화 기록, 마이크를 쓰지 않습니다.</li>
-    <li>운영자는 사용자의 대화·파일·계정 정보를 볼 수 없습니다 — 그 정보는 사용자가 연결한 서버에 있습니다.</li>
+    <li>운영자는 사용자의 대화, 파일, 계정 정보를 볼 수 없습니다. 이 정보는 사용자가 연결한 서버에 있습니다.</li>
   </ul>
 
   <h2>3. 전송과 보관</h2>
@@ -104,10 +104,10 @@ footer a{color:var(--fg-2);text-decoration:none}
   <h2>5. 운영자의 Coai 중계 서버</h2>
   <p>PC의 Coai에서 '휴대폰 연결'에 운영자가 제공하는 Coai 중계 서버를 쓰는 경우에만 해당합니다.</p>
   <ul>
-    <li><strong>중계 서버가 보는 것</strong>: 접속한 IP 주소, 시각, 주고받은 데이터의 크기, 우편함 주소(무작위로 만든 식별자). 대화·파일·계정 같은 내용은 암호문이라 읽을 수 없습니다.</li>
-    <li><strong>보관</strong>: 암호문은 상대가 가져갈 때까지 메모리에만 두고 최대 90초 뒤 버립니다. IP 주소는 남용을 막는 횟수 제한에만 메모리에서 1분~1시간 쓰고 파일로 남기지 않습니다. 내용이나 접속 기록을 따로 저장하지 않습니다.</li>
+    <li><strong>중계 서버가 보는 것</strong>: 접속한 IP 주소, 시각, 주고받은 데이터의 크기, 우편함 주소(무작위로 만든 식별자). 대화, 파일, 계정 같은 내용은 암호문이라 읽을 수 없습니다.</li>
+    <li><strong>보관</strong>: 암호문은 상대가 가져갈 때까지 메모리에만 두고 최대 90초 뒤 버립니다. IP 주소는 남용을 막기 위한 횟수 제한에만 1분~1시간 동안 메모리에서 쓰고, 파일로 남기지 않습니다. 내용이나 접속 기록을 따로 저장하지 않습니다.</li>
     <li><strong>사용 신청</strong>: 중계 서버는 승인을 받아 씁니다. PC의 Coai에서 신청할 때 <strong>이름, 이메일, 쓰임(선택)</strong>을 받아 운영자의 중계 서버에 보관하며, 승인 판단과 연락에만 씁니다. 신청 정보는 그 PC의 우편함 주소와 함께 남고 PC의 열쇠는 보관하지 않습니다.</li>
-    <li><strong>사용량 요약(선택)</strong>: 중계 서버를 신청할 때나 PC의 Coai 설정에서 동의한 경우에만, 연결돼 있는 동안 6시간마다 그 PC의 최근 35일 날짜별 턴 수와 토큰 수(입력 · 출력 · 캐시)를 운영자의 중계 서버로 보냅니다. 대화 내용, 직원 · 회사 이름, 사용한 AI 모델은 보내지 않습니다. 이 요약은 그 PC의 우편함 주소와 함께 날짜별로 쌓아 최대 10년 보관하며 중계 서버 운영 통계에만 씁니다. PC는 최근 35일만 다시 보내고, 중계 서버는 그보다 오래된 날을 지우지 않습니다. 동의하지 않아도 중계 서버는 똑같이 쓸 수 있습니다.</li>
+    <li><strong>사용량 요약(선택)</strong>: 중계 서버를 신청할 때나 PC의 Coai 설정에서 동의한 경우에만, 연결돼 있는 동안 6시간마다 그 PC의 최근 35일 날짜별 턴 수와 토큰 수(입력 · 출력 · 캐시)를 운영자의 중계 서버로 보냅니다. 대화 내용, 직원 이름과 회사 이름, 사용한 AI 모델은 보내지 않습니다. 이 요약은 그 PC의 우편함 주소와 함께 날짜별로 쌓아 최대 10년 보관하며 중계 서버 운영 통계에만 씁니다. PC는 최근 35일만 다시 보내고, 중계 서버는 그보다 오래된 날을 지우지 않습니다. 동의하지 않아도 중계 서버는 똑같이 쓸 수 있습니다.</li>
     <li><strong>삭제</strong>: PC의 Coai 설정에서 사용량 보내기를 끄면 그때까지 쌓인 사용량 요약이 중계 서버에서 전부 지워집니다. 아래 문의 이메일로 요청하면 신청 정보와 사용량 요약을 지우고 승인을 거둡니다. 운영자가 중계 서비스를 끝내면 신청 정보와 사용량 요약도 함께 지웁니다.</li>
   </ul>
 
@@ -137,8 +137,8 @@ footer a{color:var(--fg-2);text-decoration:none}
     <tr><th>Account</th><td>The email and password you enter at sign-in are sent only to the server you connected to. The app does not store your password; it keeps only the sign-in session the server gives it.</td></tr>
     <tr><th>Chats and attachments</th><td>Instructions you send to staff and photos or files you pick are sent to the server you connected to; replies and approvals are fetched from that server.</td></tr>
     <tr><th>Camera</th><td>Used only to read the QR code on your PC screen to link this phone to your PC. No photos are taken, stored or sent.</td></tr>
-    <tr><th>Notifications</th><td>If you turn notifications on, the device's push token is registered with the server you connected to. Notifications are delivered through the Expo push service and Google Firebase Cloud Messaging and contain only a staff name and a fixed line such as "New reply" — never chat content. Signing out removes the registration.</td></tr>
-    <tr><th>Linking your PC</th><td>Your PC and phone exchange messages through a relay server (your company server, or the Coai relay server the operator provides — section 5), <strong>end-to-end encrypted</strong> — the relay cannot read them. The device key used for linking stays in the phone's secure storage (Android Keystore).</td></tr>
+    <tr><th>Notifications</th><td>If you turn notifications on, the device's push token is registered with the server you connected to. Notifications are delivered through the Expo push service and Google Firebase Cloud Messaging and contain only a staff name and a fixed line such as "New reply". They never contain chat content. Signing out removes the registration.</td></tr>
+    <tr><th>Linking your PC</th><td>Your PC and phone exchange messages through a relay server (your company server, or the Coai relay server the operator provides; see section 5). The messages are <strong>end-to-end encrypted</strong>, so the relay cannot read them. The device key used for linking stays in the phone's secure storage (Android Keystore).</td></tr>
     <tr><th>Update check</th><td>When the app starts, and every six hours while it is open, it checks for a new version. An app installed from Google Play asks Google Play; any other install asks this app's public release page (the version list file on GitHub) and, if a new version exists, checks whether this app has a public Google Play page. These requests carry no chats, account, or device information (connection details such as your IP address may be logged by those services).</td></tr>
     <tr><th>On the device only</th><td>The list of servers you added, your sign-in session, instructions not yet sent and drafts, and display settings. They are removed when you uninstall the app.</td></tr>
   </table>
@@ -147,13 +147,13 @@ footer a{color:var(--fg-2);text-decoration:none}
   <ul>
     <li>No advertising IDs, usage analytics or crash reports are sent to the operator. (The usage summary that Coai on your PC sends only with your consent is described separately in section 5.)</li>
     <li>No location, contacts, call logs or microphone.</li>
-    <li>The operator cannot see your chats, files or account information — they live on the server you connected to.</li>
+    <li>The operator cannot see your chats, files or account information. They live on the server you connected to.</li>
   </ul>
 
   <h2>3. Transmission and retention</h2>
   <ul>
     <li>The app talks to servers only over encrypted connections (HTTPS).</li>
-    <li>Retention and deletion of data on a server (chats, files, accounts) are decided by whoever runs that server — your company or you. For a company server, contact your administrator.</li>
+    <li>Retention and deletion of data on a server (chats, files, accounts) are decided by whoever runs that server (your company or you). For a company server, contact your administrator.</li>
     <li>Signing out removes that server's sign-in session and notification registration; uninstalling the app removes everything stored on the device.</li>
   </ul>
 
@@ -172,7 +172,7 @@ footer a{color:var(--fg-2);text-decoration:none}
     <li><strong>What the relay sees</strong>: connecting IP addresses, times, the size of data exchanged and mailbox addresses (randomly generated identifiers). Content such as chats, files and accounts is ciphertext it cannot read.</li>
     <li><strong>Retention</strong>: ciphertext is held in memory only until the other side picks it up and is dropped after at most 90 seconds. IP addresses are used in memory for abuse rate limits for one minute to one hour and are not written to disk. No content or access logs are stored.</li>
     <li><strong>Application</strong>: the relay is used with approval. When you apply from Coai on your PC, your <strong>name, email and purpose (optional)</strong> are kept on the operator's relay server and used only to review the application and contact you. The application is stored with that PC's mailbox address; the PC's key is not kept.</li>
-    <li><strong>Usage summary (optional)</strong>: only if you agree when applying for the relay or in Coai settings on your PC, the PC sends the operator's relay server, every 6 hours while connected, the number of turns and tokens (input · output · cache) per day for the last 35 days. Chat content, staff and company names and the AI models used are not sent. The summaries are kept with that PC's mailbox address, accumulated by day for up to 10 years, and used only for relay operation statistics. The PC re-sends only the last 35 days; the relay server does not delete older days. You can use the relay the same way without agreeing.</li>
+    <li><strong>Usage summary (optional)</strong>: only if you agree (when applying for the relay or in Coai settings on your PC), the PC sends the operator's relay server the number of turns and tokens (input, output, cache) per day for the last 35 days, every 6 hours while connected. Chat content, staff and company names and the AI models used are not sent. The summaries are kept with that PC's mailbox address, accumulated by day for up to 10 years, and used only for relay operation statistics. The PC re-sends only the last 35 days; the relay server does not delete older days. You can use the relay the same way without agreeing.</li>
     <li><strong>Deletion</strong>: turning off usage sharing in Coai settings on your PC deletes all usage summaries accumulated so far from the relay server. Email the contact below to have your application and usage summary deleted and approval withdrawn. If the operator ends the relay service, applications and usage summaries are deleted with it.</li>
   </ul>
 
